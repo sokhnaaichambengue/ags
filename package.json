@@ -1,7 +1,6 @@
 {
   "name": "sequelize-demo",
   "version": "0.0.0",
-  "private": true,
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon config/serverConfig.js"
