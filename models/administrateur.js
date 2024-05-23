@@ -1,6 +1,8 @@
-const {Utilisateur} = require("utilisateur")
+
 const sequelize = require("config/databaseConfig")
 const Utilisateur = require("./utilisateur");
+
+
 // Class Administrateur
 class Administrateur extends Utilisateur{
     constructor(nom, prenom, login, motpasse) {
