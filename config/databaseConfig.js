@@ -3,4 +3,4 @@ const { Sequelize} = require("sequelize")
 const sequelize = new Sequelize("ags","root","")
 
 
-module.exports = sequelize
+module.exports = {sequelize,Sequelize}

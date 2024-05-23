@@ -1,2 +1,2 @@
 /* App script */
-// left blank intentionally
+const {app} = require("./config/serverConfig")
