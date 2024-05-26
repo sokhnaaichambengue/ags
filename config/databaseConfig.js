@@ -1,5 +1,6 @@
 const mysql = require("mysql")
-const { Sequelize} = require("sequelize")
+
+const { Sequelize,Model} = require("sequelize")
 const sequelize = new Sequelize("sequelize-test","root","",{
     host:"localhost",
     dialect:"mysql"
@@ -13,4 +14,4 @@ const sequelize = new Sequelize("sequelize-test","root","",{
     console.log("Error while loading connection")
 })
 
-module.exports = {sequelize,Sequelize}
+module.exports = {sequelize,Model}

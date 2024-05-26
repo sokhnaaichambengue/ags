@@ -1,2 +1,3 @@
 /* App script */
-const {app} = require("./config/serverConfig")
+const con = require('./config/databaseConfig')
+const app = require("./config/serverConfig")
