@@ -1,75 +1,177 @@
 /* Models script */
 
-const {sequelize,Model} = require('config/databaseConfig')
+const { sequelize,Model} = require("../config/databaseConfig")
 
-class Utilisateur extends Model{
-    #prenom
-    #nom
-    #login
-    #motpasse
+class Utilisateur extends Model{}
 
-    get prenom() {
-        return this.#prenom;
+class Etudiant extends Utilisateur{}
+Etudiant.init(
+    {
+        nom:{
+
+        },
+        prenom:{
+
+        },
+        login:{
+
+        },
+        motpasse:{
+
+        },
+        filiere:{
+
+        },
+        semestre:{
+
+        }
+    },
+    {
+        sequelize:sequelize,
+        modelName:etudiant
     }
+)
 
-    set prenom(value) {
-        this.#prenom = value;
+
+class Enseignant extends Utilisateur{}
+Enseignant.init(
+    {
+        nom:{
+
+        },
+        prenom:{
+
+        },
+        login:{
+
+        },
+        motpasse:{
+
+        },
+        module:{
+
+        }
+    },
+    {
+        sequelize:sequelize,
+        modelName:enseignant
     }
+)
 
-    get nom() {
-        return this.#nom;
+class Administrateur extends Utilisateur{}
+Administrateur.init(
+    {
+        nom:{
+
+        },
+        prenom:{
+
+        },
+        login:{
+
+        },
+        motpasse:{
+
+        }
+    },
+    {
+        sequelize:sequelize,
+        modelName:administrateur
     }
+)
 
-    set nom(value) {
-        this.#nom = value;
+class Cours extends Model{}
+Cours.init(
+    {
+        nom:{
+
+        },
+        enseignant:{
+
+        },
+        lieu:{
+
+        }
+    },
+    {
+        sequelize:sequelize,
+        modelName:cours
     }
+)
 
-    get login() {
-        return this.#login;
+class Notes extends Model{}
+Notes.init(
+    {
+        valeur:{
+
+        },
+        evaluation:{
+
+        },
+        etudiant:{
+
+        },
+        semestre:{
+
+        }
+    },
+    {
+        sequelize:sequelize,
+        modelName:notes
     }
+)
 
-    set login(value) {
-        this.#login = value;
+class Evaluation extends Model{}
+Evaluation.init(
+    {
+        id:{
+
+        },
+        duree:{
+
+        },
+        cours:{
+
+        },
+        filiere:{
+
+        }
+    },
+    {
+        sequelize:sequelize,
+        modelName:evaluation
     }
+)
 
-    get motpasse() {
-        return this.#motpasse;
+class Semestre extends Model{}
+Semestre.init(
+    {
+        nom:{
+
+        }
+    },
+    {
+        sequelize:sequelize,
+        modelName:semestre
     }
+)
+class Filieres extends Model{}
+Filieres.init(
+    {
+        nom:{
 
-    set motpasse(value) {
-        this.#motpasse = value;
+        },
+        nbretudiant:{
+
+        },
+        groupe:{
+
+        }
+    },
+    {
+        sequelize:sequelize,
+        modelName:filieres
     }
+)
 
-    consulterNote(){}
-    consulterCours(){}
-    consulterPlanning(){}
-    signalerErreur(){}
-}
-
-class Etudiant extends Utilisateur{
-    filiere
-    semestre
-    constructor(nom,prenom,login,motpasse,filiere,semestre) {
-        super();
-        this.nom = nom
-        this.prenom = prenom
-        this.login = login
-        this.motpasse = motpasse
-        this.filiere = filiere
-        this.semestre = semestre
-    }
-
-
-    consulterCours() {
-        super.consulterCours()
-        console.log("cours")
-
-    }
-}
-
-const et = new Etudiant(
-    "fall","ibrahima",
-    "ibousv","1234",
-    "DBE",1)
-
-et.consulterCours()
+module.exports = {Etudiant,Enseignant}
