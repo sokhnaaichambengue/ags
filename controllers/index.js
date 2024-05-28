@@ -1,5 +1,6 @@
 
 const {sequelize,Etudiant,Administrateur,Enseignant} = require('../models/model')
+
 const home = {
     getHome:function (req,res){
         res.render('../views/index.ejs')
