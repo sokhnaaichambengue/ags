@@ -5,6 +5,7 @@ const {DataTypes} = require("sequelize");
 
 class Utilisateur extends Model{}
 
+/* Models */
 class Administrateur extends Utilisateur{}
 Administrateur.init(
     {
@@ -239,6 +240,7 @@ Cours.init(
     }
 )
 
+/* */
 
 module.exports =
     {

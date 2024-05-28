@@ -1,5 +1,6 @@
 
 const {sequelize,Etudiant,Administrateur,Enseignant} = require('../models/model')
+//const session = require('express-session')
 
 const home = {
     getHome:function (req,res){
