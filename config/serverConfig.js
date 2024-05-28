@@ -6,6 +6,9 @@ const router = require('../routes/index')
 app.use("../public", express.static("public"))
 
 app.set('views','../views')
+
+app.set('view engine','ejs')
+
 app.use(router)
 
 app.listen(PORT,()=>{
