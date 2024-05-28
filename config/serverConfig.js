@@ -1,16 +1,17 @@
 /* Server script */
 const express = require('express')
-
+const bodyparser = require('body-parser')
 const app = express()
 const PORT = 3000
 const router = require('../routes/index')
 app.use("../public", express.static("public"))
-app.set('views','../views')
-app.set('view engine','ejs')
+
+app.set('views', './views')
+app.use(bodyparser.urlencoded({ extended: false }))
 app.use(router)
 
-app.listen(PORT,()=>{
-    console.log("Server running on port: "+PORT)
+app.listen(PORT, () => {
+    console.log("Server running on port: " + PORT)
 })
 
 module.exports = app

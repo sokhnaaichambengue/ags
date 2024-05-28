@@ -1,9 +1,9 @@
 /* Router script */
-const express = require('express');
-const  router = express.Router();
-const home = require('../controllers/index')
+const express = require('express')
 
-router.use(home.getHome,home.postHome)
+const router = express.Router()
+
+const home = require('../controllers/index')
 
 router.get('/',home.getHome)
 router.post('/',home.postHome)
