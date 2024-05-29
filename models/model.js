@@ -245,7 +245,7 @@ Cours.init(
 /* Association */
 
 Filieres.hasMany(Etudiant)
-Etudiant.belongsTo(Filieres, { as: 'FilieresEtudiant', foreignKey: 'FK_fe', onDelete: 'CASCADE' })
+Etudiant.belongsTo(Filieres, { as: 'FilieresEtudiant', foreignKey: 'FK_filiere_etudiant', onDelete: 'CASCADE' })
 
 Filieres.belongsToMany(Evaluation, { as: 'FilieresEvaluation', through: 'assos_fe' })
 Evaluation.belongsToMany(Filieres, { as: 'FilieresEvaluation', through: 'assos_fe' })
@@ -280,5 +280,5 @@ module.exports =
     Etudiant, Enseignant,
     Administrateur, Cours,
     Notes, Filieres,
-    Evaluation, Semestre
+    Evaluation, Semestre,sequelize
 }

@@ -14,6 +14,6 @@ const sequelize = new Sequelize("sequelize-test","root","",{
     console.log("Error while loading connection")
 })
 
-sequelize.sync({alter:true})
+sequelize.sync({update:true})
 
 module.exports = {sequelize,Model}
