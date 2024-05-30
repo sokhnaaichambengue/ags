@@ -1,28 +1,47 @@
 
-const { sequelize,Etudiant, Administrateur, Enseignant } = require('../models/model')
+const { sequelize,Administrateur, Etudiant, Enseignant } = require('../models/model')
+const session = require('express-session')
 
-const { QueryTypes } = require('sequelize')
-//const session = require('express-session')
+session({
+    secret: 'login-session',
+    resave: false,
+    saveUninitialized: true
+}) 
 
 const home = {
     getHome: function (req, res) {
-        res.render('index.ejs')
+        res.render('index')
     },
     postHome: async function (req, res) {
 
-        const login = req.body.login
-        const mdp = req.body.motpasse
-        const /*[results, metadata]*/ test =
-           
-            await sequelize.query('SELECT * FROM administrateurs WHERE login = :login and motpasse = :motpasse',
-                {
-                    replacements: { login: login, motpasse: mdp },
-                    type: QueryTypes.SELECT
-                }
-            )
-        res.send(test)    
-
-
+        const { login, motpasse } = req.body
+        
+        const ad = await Administrateur.findOne({
+            where: {
+                login: login,
+                motpasse: motpasse
+            }
+        })
+        const et = await Etudiant.findOne({
+            where: {
+                login: login,
+                motpasse: motpasse
+            }
+        })
+        const en = await Enseignant.findOne({
+            where: {
+                login: login,
+                motpasse: motpasse
+            }
+        })
+        if (!ad) {
+            res.status(400).send('login ou mot de passe incorrect')
+        } else {
+            req.session.login = login
+            req.session.motpasse = motpasse
+            session.role = 'admin' 
+            res.redirect('/admin/space')
+        }
     }
 }
 module.exports = home
