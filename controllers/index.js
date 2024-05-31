@@ -1,12 +1,5 @@
 
 const { sequelize,Administrateur, Etudiant, Enseignant } = require('../models/model')
-const session = require('express-session')
-
-session({
-    secret: 'login-session',
-    resave: false,
-    saveUninitialized: true
-}) 
 
 const home = {
     getHome: function (req, res) {
@@ -44,4 +37,4 @@ const home = {
         }
     }
 }
-module.exports = home
+module.exports =  home

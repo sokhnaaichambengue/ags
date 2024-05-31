@@ -3,8 +3,18 @@ const express = require('express')
 const bodyparser = require('body-parser')
 const app = express()
 const PORT = 3000
+
+const session = require('express-session')
+
 const router = require('../routes/index')
 const Adminrouter = require('../routes/AdminRoute')
+
+// Session setup
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: true
+}))
 
 // Static files setup
 app.use("../public", express.static("public"))
