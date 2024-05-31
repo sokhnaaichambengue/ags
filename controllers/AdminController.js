@@ -115,7 +115,7 @@ const admin = {
 
     // Delete function
     deleteEtudiant: (req, res) => {
-
+        
     },
     deleteEnseignant: (req, res) => {
 
