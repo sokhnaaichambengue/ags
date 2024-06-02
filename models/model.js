@@ -136,7 +136,6 @@ Etudiant.init(
             validate: {
                 notNull: true,
                 notEmpty: true,
-                len: [8, 12]
             }
 
         },
@@ -146,10 +145,6 @@ Etudiant.init(
 
         },
         filiere: {
-            type: DataTypes.STRING,
-
-        },
-        semestre: {
             type: DataTypes.STRING,
 
         }

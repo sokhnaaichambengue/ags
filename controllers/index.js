@@ -30,11 +30,9 @@ const home = {
         if (!ad) {
             res.status(400).send('login ou mot de passe incorrect')
         } else {
-            req.session.login = login
-            req.session.motpasse = motpasse
-            session.role = 'admin' 
             res.redirect('/admin/space')
         }
     }
 }
+
 module.exports =  home

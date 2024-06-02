@@ -8,14 +8,13 @@ const admin = {
 
     // Create function
     createEtudiant: (req, res) => {
-        const { nom, prenom, login, motpasse, filiere, semestre } = req.body;
+        const { nom, prenom, login, motpasse, filiere } = req.body;
         const etudiant = {
             nom,
             prenom,
             login,
             motpasse,
-            filiere,
-            semestre
+            filiere
         }
 
         Etudiant.create(etudiant).then(() => {
