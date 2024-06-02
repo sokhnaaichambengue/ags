@@ -61,9 +61,6 @@ Enseignant.init(
                 notNull: true,
                 notEmpty: true
             }
-        },
-        module: {
-            type: DataTypes.INTEGER,
         }
     },
     {
@@ -84,9 +81,6 @@ Filieres.init(
         nom: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        nbretudiant: {
-            type: DataTypes.INTEGER,
         }
     },
     {
@@ -233,13 +227,13 @@ Cours.init(
 /* Association */
 
 Filieres.hasMany(Etudiant)
-Etudiant.belongsTo(Filieres, { as: 'FilieresEtudiant', foreignKey: 'FK_filiere_etudiant', onDelete: 'CASCADE' })
+Etudiant.belongsTo(Filieres, { as: 'FilieresEtudiant', onDelete: 'CASCADE' })
 
 Filieres.belongsToMany(Evaluation, { as: 'FilieresEvaluation', through: 'assos_fe' })
 Evaluation.belongsToMany(Filieres, { as: 'FilieresEvaluation', through: 'assos_fe' })
 
 Evaluation.hasMany(Notes)
-Notes.belongsTo(Evaluation, { as: 'EvaluationNotes', foreignKey: 'FK_evaluation_notes', onDelete: 'CASCADE' })
+Notes.belongsTo(Evaluation, { as: 'EvaluationNotes', onDelete: 'CASCADE' })
 
 Evaluation.belongsToMany(Cours, { as: 'EvaluationCours', through: 'assos_ec' })
 Cours.belongsToMany(Evaluation, { as: 'EvaluationCours', through: 'assos_ec' })
@@ -251,13 +245,13 @@ Cours.belongsToMany(Etudiant, { as: 'CoursEtudiant', through: 'assos_ce' })
 Etudiant.belongsToMany(Cours, { as: 'CoursEtudiant', through: 'assos_ce' })
 
 Enseignant.hasMany(Cours)
-Cours.belongsTo(Enseignant, { as: 'EnseignantCours', foreignKey: 'FK_enseignant_cours', onDelete: 'CASCADE' })
+Cours.belongsTo(Enseignant, { as: 'EnseignantCours', onDelete: 'CASCADE' })
 
 Etudiant.hasMany(Notes)
-Notes.belongsTo(Etudiant, { as: 'EtudiantNotes', foreignKey: 'FK_etudiant_notes', onDelete: 'CASCADE' })
+Notes.belongsTo(Etudiant, { as: 'EtudiantNotes',onDelete: 'CASCADE' })
 
 Semestre.hasMany(Notes)
-Notes.belongsTo(Semestre, { as: 'SemestreEtudiant', foreignKey: 'FK_semestre_notes', onDelete: 'CASCADE' })
+Notes.belongsTo(Semestre, { as: 'SemestreEtudiant', onDelete: 'CASCADE' })
 
 Semestre.belongsToMany(Etudiant, {  as:'SemestreEtudiant',through: 'assos_se' })
 Etudiant.belongsToMany(Semestre, {  as:'SemestreEtudiant',through: 'assos_se' })
