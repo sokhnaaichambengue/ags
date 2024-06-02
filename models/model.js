@@ -101,13 +101,9 @@ Filieres.init(
 class Semestre extends Model { }
 Semestre.init(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
         nom: {
             type: DataTypes.STRING,
+            primaryKey: true
         }
     },
     {
@@ -269,6 +265,7 @@ Notes.belongsTo(Semestre, { as: 'SemestreEtudiant', foreignKey: 'FK_semestre_not
 Semestre.belongsToMany(Etudiant, {  as:'SemestreEtudiant',through: 'assos_se' })
 Etudiant.belongsToMany(Semestre, {  as:'SemestreEtudiant',through: 'assos_se' })
 
+sequelize.sync()
 
 module.exports =
 {

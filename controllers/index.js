@@ -27,11 +27,17 @@ const home = {
                 motpasse: motpasse
             }
         })
-        if (!ad) {
+        if (!ad && !et && !en) {
             res.status(400).send('login ou mot de passe incorrect')
-        } else {
+        } else if(ad){
             res.redirect('/admin/space')
+        }else if(et){
+            res.redirect('/etudiant/space')
+        }else if(en){
+            res.redirect('/enseignant/space')
         }
+
+
     }
 }
 

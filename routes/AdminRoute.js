@@ -27,4 +27,4 @@ AdminRouter.delete('/admin/space/delete/enseignant', admin.deleteEnseignant)
 AdminRouter.delete('/admin/space/delete/cour', admin.deleteCours)
 
 // Export
-module.exports = AdminRouter;
+module.exports = AdminRouter
