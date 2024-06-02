@@ -2,7 +2,7 @@
   "name": "sequelize-demo",
   "version": "0.0.0",
   "scripts": {
-    "start": "node app.js",
+    "app": "node app.js",
     "dev": "nodemon config/serverConfig.js"
   },
   "dependencies": {
