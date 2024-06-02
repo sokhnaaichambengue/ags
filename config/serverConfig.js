@@ -8,6 +8,9 @@ const session = require('express-session')
 
 const router = require('../routes/index')
 const Adminrouter = require('../routes/AdminRoute')
+const Etudiantrouter = require('../routes/EtudiantRoute')
+const Enseignantrouter = require('../routes/EnseignantRoute')
+
 
 // Session setup
 app.use(session({
@@ -27,7 +30,9 @@ app.use(bodyparser.urlencoded({ extended: false }))
 // Routers setup
 app.use('/',router)
 app.use('/', Adminrouter)
- 
+app.use('/', Etudiantrouter)
+app.use('/', Enseignantrouter)
+
 // Server setup
 app.listen(PORT, () => {
     console.log("Server running on port: " + PORT)

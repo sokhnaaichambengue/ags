@@ -11,6 +11,7 @@
     <h1>Welcome admin </h1>
     <p><a href="/admin/space/logout">Se déconnecter</a></p>
     <div>
+        Ajouter un étudiant
         <form action="space/create/etudiant" method="post">
             <label for="nom">Nom</label>
             <input type="text" name="nom">
@@ -31,6 +32,28 @@
             <input type="text" name="semestre">
             <br>
             <input type="submit" value="Ajouter un étudiant">
+        </form>
+    </div>
+    
+    <div>
+        Ajouter un enseignant
+        <form action="space/create/enseignant" method="post">
+            <label for="nom">Nom</label>
+            <input type="text" name="nom">
+            <br>
+            <label for="prenom">Prénom</label>
+            <input type="text" name="prenom">
+            <br>
+            <label for="login">Login</label>
+            <input type="text" name="login">
+            <br>
+            <label for="motpasse">Password</label>
+            <input type="password" name="motpasse">
+            <br>
+            <label for="Module">Module</label>
+            <input type="number" name="module">
+            <br>
+            <input type="submit" value="Ajouter un enseignant">
         </form>
     </div>
 </body>

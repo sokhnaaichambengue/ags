@@ -1,7 +1,7 @@
 /* Admin Controller */
 const {Enseignant,Cours,Notes,sequelize} = require('../models/model')
 
-const en = {
+const enseignant = {
     getHome: (req, res) => {
         res.render('enseignant-view')
     },
@@ -11,7 +11,6 @@ const en = {
             valeur,
             evaluation,
             etudiant,
-            cours,
             notes
         }
 
@@ -21,6 +20,7 @@ const en = {
             res.end("Une erreur s'est produite")
         })
     },
+
     modifNote: (req, res) => {
         const { valeur, evaluation, etudiant, notes } = req.body;
         const note = {
@@ -38,4 +38,14 @@ const en = {
         })
     },
     
+    logout: (req, res) => {
+        req.session.destroy((err) => {
+            if (err) {
+                console.error(err);
+            }
+            res.redirect('/');
+        })
+    }
 }
+
+module.exports = enseignant

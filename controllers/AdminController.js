@@ -46,7 +46,7 @@ const admin = {
         Enseignant.create(enseignant).then(() => {
             res.send("L'enseignant a été créé avec succès")
         }).catch(err => {
-            res.end("Une erreur s'est produite")
+            res.end(err)
         })
     },
     createCours: (req, res) => {

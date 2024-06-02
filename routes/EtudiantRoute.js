@@ -7,4 +7,7 @@ const etudiant = require('../controllers/EtudiantController')
 
 // Get Router
 EtudiantRouter.get('/etudiant/space', etudiant.getHome)
-EtudiantRouter.get('/etudiant/space', etudiant.logout)
+EtudiantRouter.get('/etudiant/space/logout', etudiant.logout)
+
+
+module.exports = EtudiantRouter

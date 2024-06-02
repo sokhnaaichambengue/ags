@@ -28,8 +28,7 @@ Administrateur.init(
             allowNull: false,
             validate: {
                 notNull: true,
-                notEmpty: true,
-                len: [8, 12]
+                notEmpty: true
             }
         }
     },
@@ -60,12 +59,11 @@ Enseignant.init(
             allowNull: false,
             validate: {
                 notNull: true,
-                notEmpty: true,
-                len: [8, 12]
+                notEmpty: true
             }
         },
         module: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
         }
     },
     {
@@ -131,7 +129,7 @@ Etudiant.init(
             unique: true,
             validate: {
                 notNull: true,
-                notEmpty: true,
+                notEmpty: true
             }
 
         },
@@ -189,7 +187,6 @@ Notes.init(
             type: DataTypes.INTEGER,
             validate: {
                 notEmpty: true,
-                len: [0, 20]
             }
         },
         evaluation: {
