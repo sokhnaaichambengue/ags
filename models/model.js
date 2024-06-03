@@ -93,6 +93,11 @@ Filieres.init(
 class Semestre extends Model { }
 Semestre.init(
     {
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
         nom: {
             type: DataTypes.STRING,
             primaryKey: true
@@ -131,10 +136,6 @@ Etudiant.init(
             type: DataTypes.STRING,
             allowNull: false
 
-        },
-        filiere: {
-            type: DataTypes.STRING,
-
         }
     },
     {
@@ -156,9 +157,6 @@ Evaluation.init(
             type: DataTypes.INTEGER,
         },
         cours: {
-            type: DataTypes.STRING,
-        },
-        filiere: {
             type: DataTypes.STRING,
         }
     },
@@ -182,16 +180,6 @@ Notes.init(
             validate: {
                 notEmpty: true,
             }
-        },
-        evaluation: {
-            type: DataTypes.INTEGER,
-        },
-        etudiant: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        semestre: {
-            type: DataTypes.INTEGER,
         }
     },
     {
