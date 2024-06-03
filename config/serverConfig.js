@@ -20,12 +20,13 @@ app.use(session({
 }))
 
 // Static files setup
-app.use("../public", express.static("public"))
+app.use(express.static('../public' ))
 
 // Views setup
 app.set('view engine', 'ejs')
 app.set('views', './views')
-app.use(bodyparser.urlencoded({ extended: false }))
+app.use(bodyparser.urlencoded({ extended: true }))
+app.use(express.json())
 
 // Routers setup
 app.use('/',router)
