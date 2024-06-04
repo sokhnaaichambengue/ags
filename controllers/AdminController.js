@@ -8,19 +8,19 @@ const admin = {
 
     // Create function
     createEtudiant: (req, res) => {
-        const { nom, prenom, login, motpasse, filiere } = req.body;
+        const { nom, prenom, login, motpasse, filiereId } = req.body;
         const etudiant = {
             nom,
             prenom,
             login,
             motpasse,
-            filiere
+            filiereId
         }
 
         Etudiant.create(etudiant).then(() => {
             res.send("L' étudiant a été créé avec succès")
         }).catch(err => {
-            res.end("Une erreur s'est produite")
+            res.end(err)
         })
 
     },

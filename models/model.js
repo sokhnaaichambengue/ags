@@ -1,6 +1,4 @@
 /* Models script */
-
-const { UPDATE } = require("sequelize/lib/query-types");
 const { sequelize, Model } = require("../config/databaseConfig")
 const { DataTypes } = require("sequelize");
 
@@ -156,7 +154,8 @@ Evaluation.init(
         duree: {
             type: DataTypes.INTEGER,
         },
-        cours: {
+        cour:
+        {
             type: DataTypes.STRING,
         }
     },
@@ -198,9 +197,6 @@ Cours.init(
             unique: true,
 
         },
-        enseignant: {
-            type: DataTypes.STRING,
-        },
         lieu: {
             type: DataTypes.STRING,
         }
@@ -223,33 +219,33 @@ Evaluation.belongsToMany(Filieres, { through: 'assos_fe' })
 Evaluation.hasMany(Notes)
 Notes.belongsTo(Evaluation, { onDelete: 'CASCADE' })
 
-Evaluation.belongsToMany(Cours, { as: 'EvaluationCours', through: 'assos_ec' })
-Cours.belongsToMany(Evaluation, { as: 'EvaluationCours', through: 'assos_ec' })
+Evaluation.belongsToMany(Cours, { through: 'assos_ec' })
+Cours.belongsToMany(Evaluation, { through: 'assos_ec' })
 
-Cours.belongsToMany(Notes, { as: 'CoursNotes', through: 'assos_cn' })
-Notes.belongsToMany(Cours, { as: 'CoursNotes', through: 'assos_cn' })
+Cours.belongsToMany(Notes, { through: 'assos_cn' })
+Notes.belongsToMany(Cours, { through: 'assos_cn' })
 
-Cours.belongsToMany(Etudiant, { as: 'CoursEtudiant', through: 'assos_ce' })
-Etudiant.belongsToMany(Cours, { as: 'CoursEtudiant', through: 'assos_ce' })
+Cours.belongsToMany(Etudiant, { through: 'assos_ce' })
+Etudiant.belongsToMany(Cours, { through: 'assos_ce' })
 
 Enseignant.hasMany(Cours)
-Cours.belongsTo(Enseignant, { as: 'EnseignantCours', onDelete: 'CASCADE' })
+Cours.belongsTo(Enseignant, { onDelete: 'CASCADE' })
 
 Etudiant.hasMany(Notes)
-Notes.belongsTo(Etudiant, { as: 'EtudiantNotes',onDelete: 'CASCADE' })
+Notes.belongsTo(Etudiant, { onDelete: 'CASCADE' })
 
 Semestre.hasMany(Notes)
-Notes.belongsTo(Semestre, { as: 'SemestreEtudiant', onDelete: 'CASCADE' })
+Notes.belongsTo(Semestre, { onDelete: 'CASCADE' })
 
-Semestre.belongsToMany(Etudiant, {  as:'SemestreEtudiant',through: 'assos_se' })
-Etudiant.belongsToMany(Semestre, {  as:'SemestreEtudiant',through: 'assos_se' })
+Semestre.belongsToMany(Etudiant, { through: 'assos_se' })
+Etudiant.belongsToMany(Semestre, { through: 'assos_se' })
 
-sequelize.sync()
+sequelize.sync({update: true})
 
 module.exports =
 {
     Etudiant, Enseignant,
     Administrateur, Cours,
     Notes, Filieres,
-    Evaluation, Semestre,sequelize
+    Evaluation, Semestre, sequelize
 }
