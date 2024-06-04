@@ -215,13 +215,13 @@ Cours.init(
 /* Association */
 
 Filieres.hasMany(Etudiant)
-Etudiant.belongsTo(Filieres, { as: 'FilieresEtudiant', onDelete: 'CASCADE' })
+Etudiant.belongsTo(Filieres, { onDelete: 'CASCADE' })
 
-Filieres.belongsToMany(Evaluation, { as: 'FilieresEvaluation', through: 'assos_fe' })
-Evaluation.belongsToMany(Filieres, { as: 'FilieresEvaluation', through: 'assos_fe' })
+Filieres.belongsToMany(Evaluation, { through: 'assos_fe' })
+Evaluation.belongsToMany(Filieres, { through: 'assos_fe' })
 
 Evaluation.hasMany(Notes)
-Notes.belongsTo(Evaluation, { as: 'EvaluationNotes', onDelete: 'CASCADE' })
+Notes.belongsTo(Evaluation, { onDelete: 'CASCADE' })
 
 Evaluation.belongsToMany(Cours, { as: 'EvaluationCours', through: 'assos_ec' })
 Cours.belongsToMany(Evaluation, { as: 'EvaluationCours', through: 'assos_ec' })
