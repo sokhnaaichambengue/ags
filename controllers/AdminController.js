@@ -1,5 +1,5 @@
 /* Admin Controller */
-const { Administrateur, sequelize, Etudiant, Enseignant, Cours, Notes } = require('../models/model')
+const {sequelize, Etudiant, Enseignant, Cours, Notes } = require('../models/model')
 //const {session} = require('./index')
 const admin = {
     getHome: (req, res) => {
@@ -89,7 +89,7 @@ const admin = {
         })  
     },
     displayEnseignant: (req, res) => {
-
+        
     },
     displayCours: (req, res) => {
 
