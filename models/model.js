@@ -213,20 +213,23 @@ Cours.init(
 Filieres.hasMany(Etudiant)
 Etudiant.belongsTo(Filieres, { onDelete: 'CASCADE' })
 
-Filieres.belongsToMany(Evaluation, { through: 'assos_fe' })
-Evaluation.belongsToMany(Filieres, { through: 'assos_fe' })
+Filieres.belongsToMany(Evaluation, { through: 'assos_filiere_evaluation' })
+Evaluation.belongsToMany(Filieres, { through: 'assos_filiere_evaluation' })
+
+Evaluation.belongsToMany(Notes, { through: 'assos_evaluation_notes' })
+Notes.belongsToMany(Evaluation, { through: 'assos_evaluation_notes' })
 
 Evaluation.hasMany(Notes)
 Notes.belongsTo(Evaluation, { onDelete: 'CASCADE' })
 
-Evaluation.belongsToMany(Cours, { through: 'assos_ec' })
-Cours.belongsToMany(Evaluation, { through: 'assos_ec' })
+Evaluation.belongsToMany(Cours, { through: 'assos_evaluation_cours' })
+Cours.belongsToMany(Evaluation, { through: 'assos_evaluation_cours' })
 
-Cours.belongsToMany(Notes, { through: 'assos_cn' })
-Notes.belongsToMany(Cours, { through: 'assos_cn' })
+Cours.belongsToMany(Notes, { through: 'assos_cours_notes' })
+Notes.belongsToMany(Cours, { through: 'assos_cours_notes' })
 
-Cours.belongsToMany(Etudiant, { through: 'assos_ce' })
-Etudiant.belongsToMany(Cours, { through: 'assos_ce' })
+Cours.belongsToMany(Etudiant, { through: 'assos_cours_etudiant' })
+Etudiant.belongsToMany(Cours, { through: 'assos_cours_etudiant' })
 
 Enseignant.hasMany(Cours)
 Cours.belongsTo(Enseignant, { onDelete: 'CASCADE' })
@@ -237,10 +240,10 @@ Notes.belongsTo(Etudiant, { onDelete: 'CASCADE' })
 Semestre.hasMany(Notes)
 Notes.belongsTo(Semestre, { onDelete: 'CASCADE' })
 
-Semestre.belongsToMany(Etudiant, { through: 'assos_se' })
-Etudiant.belongsToMany(Semestre, { through: 'assos_se' })
+Semestre.hasMany(Etudiant)
+Cours.belongsTo(Semestre, { onDelete: 'CASCADE' })
 
-sequelize.sync({update: true})
+sequelize.sync({ update: true })
 
 module.exports =
 {

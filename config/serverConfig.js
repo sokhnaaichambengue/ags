@@ -11,7 +11,6 @@ const Adminrouter = require('../routes/AdminRoute')
 const Etudiantrouter = require('../routes/EtudiantRoute')
 const Enseignantrouter = require('../routes/EnseignantRoute')
 
-
 // Session setup
 app.use(session({
     secret: 'secret',
@@ -20,7 +19,7 @@ app.use(session({
 }))
 
 // Static files setup
-app.use(express.static('../public' ))
+app.use(express.static('public'))
 
 // Views setup
 app.set('view engine', 'ejs')
