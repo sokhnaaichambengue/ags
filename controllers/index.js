@@ -28,7 +28,7 @@ const home = {
             }
         })
         if (!ad && !et && !en) {
-            res.status(400).send('login ou mot de passe incorrect')
+            res.status(404).send('<script>alert("login ou mot de passe incorrect")</script>')
         } else if(ad){
             res.redirect('/admin/space')
         }else if(et){

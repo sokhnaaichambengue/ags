@@ -8,13 +8,11 @@ const sequelize = new Sequelize("sequelize-test","root","31012003",{
 
  sequelize.authenticate()
      .then(()=>{
-        console.log("Connnected !")
+         console.log("Connnected !")
+         sequelize.sync({ update: true })
     })
      .catch ((err)=> {
     console.log("Error while loading connection")
 })
-
-sequelize.sync({alter:true})
-
 
 module.exports = {sequelize,Model}
