@@ -78,7 +78,8 @@ Filieres.init(
         },
         nom: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            unique: true
         }
     },
     {
@@ -98,7 +99,7 @@ Semestre.init(
         },
         nom: {
             type: DataTypes.STRING,
-            primaryKey: true
+            unique: true
         }
     },
     {
@@ -219,9 +220,9 @@ Evaluation.belongsToMany(Filieres, { through: 'assos_filiere_evaluation' })
 Evaluation.belongsToMany(Notes, { through: 'assos_evaluation_notes' })
 Notes.belongsToMany(Evaluation, { through: 'assos_evaluation_notes' })
 
-Evaluation.hasMany(Notes)
+/* Evaluation.hasMany(Notes)
 Notes.belongsTo(Evaluation, { onDelete: 'CASCADE' })
-
+ */
 Evaluation.belongsToMany(Cours, { through: 'assos_evaluation_cours' })
 Cours.belongsToMany(Evaluation, { through: 'assos_evaluation_cours' })
 
@@ -240,7 +241,7 @@ Notes.belongsTo(Etudiant, { onDelete: 'CASCADE' })
 Semestre.hasMany(Notes)
 Notes.belongsTo(Semestre, { onDelete: 'CASCADE' })
 
-Semestre.hasMany(Etudiant)
+Semestre.hasMany(Cours)
 Cours.belongsTo(Semestre, { onDelete: 'CASCADE' })
 
 sequelize.sync({ update: true })

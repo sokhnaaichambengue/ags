@@ -1,5 +1,10 @@
 /* Admin Controller */
-const {sequelize, Etudiant, Enseignant, Cours, Notes } = require('../models/model')
+const
+    { sequelize, Etudiant,
+        Enseignant, Cours,
+        Notes, Filieres,
+        Semestre } = require('../models/model')
+
 //const {session} = require('./index')
 const admin = {
     getHome: (req, res) => {
@@ -50,21 +55,21 @@ const admin = {
         })
     },
     createCours: (req, res) => {
-        const { nom, enseignant,lieu } = req.body;
+        const { nom, enseignant, lieu } = req.body;
         const cours = {
             nom,
             enseignant,
             lieu
         }
 
-        Cours.create(cours).then(()=>{
+        Cours.create(cours).then(() => {
             res.send("Le cours a été créé avec succès")
         }).catch(err => {
             res.end("Une erreur s'est produite")
         })
     },
     createNote: (req, res) => {
-        const { valeur,evaluation,etudiant,notes } = req.body;
+        const { valeur, evaluation, etudiant, notes } = req.body;
         const note = {
             valeur,
             evaluation,
@@ -73,11 +78,39 @@ const admin = {
             notes
         }
 
-        Notes.create(note).then(()=> {
+        Notes.create(note).then(() => {
             res.send("La note a été créé avec succès")
         }).catch(err => {
             res.end("Une erreur s'est produite")
         })
+    },
+
+    createFilieres: (req, res) => {
+        const { nom } = req.body;
+        const filieres = {
+            nom
+        }
+
+        Filieres.create(filieres).then(() => {
+            res.send("La filière a été créé avec succès")
+        }).catch(err => {
+            res.end("Une erreur s'est produite")
+        })
+
+    },
+
+    createSemestres: (req, res) => {
+        const { nom } = req.body;
+        const semestres = {
+            nom
+        }
+
+        Semestre.create(semestres).then(() => {
+            res.send("La filière a été créé avec succès")
+        }).catch(err => {
+            res.end("Une erreur s'est produite")
+        })
+
     },
 
     // Read function
@@ -86,10 +119,10 @@ const admin = {
             res.send({ etudiants })
         }).catch(err => {
             res.end("Une erreur s'est produite")
-        })  
+        })
     },
     displayEnseignant: (req, res) => {
-        
+
     },
     displayCours: (req, res) => {
 
@@ -114,7 +147,7 @@ const admin = {
 
     // Delete function
     deleteEtudiant: (req, res) => {
-        
+
     },
     deleteEnseignant: (req, res) => {
 

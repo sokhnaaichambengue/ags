@@ -1,7 +1,7 @@
 const mysql = require("mysql")
 
 const { Sequelize,Model} = require("sequelize")
-const sequelize = new Sequelize("sequelize-test","root","31012003",{
+const sequelize = new Sequelize("sequelize_ags","root","31012003",{
     host:"localhost",
     dialect:"mysql"
 })
