@@ -130,7 +130,7 @@ const admin = {
         })
     },
     displayCours: (req, res) => {
-
+        
     },
     displayFilieres: (req, res) => {
 
