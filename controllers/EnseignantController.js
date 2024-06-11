@@ -37,7 +37,13 @@ const enseignant = {
             res.end("Une erreur s'est produite")
         })
     },
-    
+    displayCours: (req, res) => {
+        Enseignant.findAll().then(cours => {
+            res.render('', { cours })
+        }).catch(err => {
+            res.end("Une erreur s'est produite")
+        })
+    },
     logout: (req, res) => {
         req.session.destroy((err) => {
             if (err) {

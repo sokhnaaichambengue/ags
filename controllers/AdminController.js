@@ -11,9 +11,9 @@ const admin = {
         res.render('pages/admin/admin-view')
     },
 
-    // Create function
+
     createEtudiant: (req, res) => {
-        const { nom, prenom, login, motpasse, filiereId } = req.body;
+        const { nom, prenom, login, motpasse, filiereId } = req.body
         const etudiant = {
             nom,
             prenom,
@@ -31,21 +31,12 @@ const admin = {
     },
 
     createEnseignant: (req, res) => {
-        const { nom, prenom, login, motpasse, module } = req.body;
-        Enseignant.create({
-            nom,
-            prenom,
-            login,
-            motpasse,
-            module
-        })
-
+        const { nom, prenom, login, motpasse } = req.body
         const enseignant = {
             nom,
             prenom,
             login,
-            motpasse,
-            module
+            motpasse
         }
 
         Enseignant.create(enseignant).then(() => {
@@ -55,7 +46,7 @@ const admin = {
         })
     },
     createCours: (req, res) => {
-        const { nom, lieu, enseignantLogin,semestreId } = req.body;
+        const { nom, lieu, enseignantLogin, semestreId } = req.body
         const cours = {
             nom,
             lieu,
@@ -69,25 +60,10 @@ const admin = {
             res.end(err)
         })
     },
-/*     createNote: (req, res) => {
-        const { valeur, evaluation, etudiant, notes } = req.body;
-        const note = {
-            valeur,
-            evaluation,
-            etudiant,
-            cours,
-            notes
-        }
 
-        Notes.create(note).then(() => {
-            res.send("La note a été créé avec succès")
-        }).catch(err => {
-            res.end("Une erreur s'est produite")
-        })
-    }, */
 
     createFilieres: (req, res) => {
-        const { nom } = req.body;
+        const { nom } = req.body
         const filieres = {
             nom
         }
@@ -101,7 +77,7 @@ const admin = {
     },
 
     createSemestres: (req, res) => {
-        const { nom } = req.body;
+        const { nom } = req.body
         const semestres = {
             nom
         }
@@ -114,33 +90,45 @@ const admin = {
 
     },
 
-    // Read function
+
     displayEtudiant: (req, res) => {
-        Etudiant.findAll().then((etudiants) => {
-            res.send({ etudiants })
+        Etudiant.findAll().then(etudiants => {
+            res.render('', { etudiants })
         }).catch(err => {
             res.end("Une erreur s'est produite")
         })
     },
     displayEnseignant: (req, res) => {
-        Enseignant.findAll().then((enseignants) => {
-            res.render('',{ enseignants })
+        Enseignant.findAll().then(enseignants => {
+            res.render('', { enseignants })
         }).catch(err => {
             res.end("Une erreur s'est produite")
         })
     },
     displayCours: (req, res) => {
-        
+        Enseignant.findAll().then(cours => {
+            res.render('', { cours })
+        }).catch(err => {
+            res.end("Une erreur s'est produite")
+        })
     },
     displayFilieres: (req, res) => {
-
+        Filieres.findAll().then(filieres => {
+            res.render('', { filieres })
+        }).catch(err => {
+            res.end("Une erreur s'est produite")
+        })
     },
     displaySemestres: (req, res) => {
-
+        Semestre.findAll().then(semestres => {
+            res.render('', { semestres })
+        }).catch(err => {
+            res.end("Une erreur s'est produite")
+        })
     },
 
 
-    // Update function
+
     updateEtudiant: (req, res) => {
 
     },
@@ -156,15 +144,73 @@ const admin = {
 
     // Delete function
     deleteEtudiant: (req, res) => {
+        const { nom, prenom, login, motpasse, filiereId } = req.body;
+        const etudiant = {
+            nom,
+            prenom,
+            login,
+            motpasse,
+            filiereId
+        }
 
+        Etudiant.destroy(etudiant).then(() => {
+            res.send('Etudiant supprimé avec succés')
+        }).catch(err => {
+            res.send(err)
+        })
     },
     deleteEnseignant: (req, res) => {
+        const { nom, prenom, login, motpasse } = req.body;
+        const enseignant = {
+            nom,
+            prenom,
+            login,
+            motpasse
+        }
 
+        Etudiant.destroy(enseignant).then(() => {
+            res.send('Enseignant supprimé avec succés')
+        }).catch(err => {
+            res.send(err)
+        })
     },
     deleteCours: (req, res) => {
+        const { nom, lieu, enseignantLogin, semestreId } = req.body
+        const cours = {
+            nom,
+            lieu,
+            enseignantLogin,
+            semestreId
+        }
 
+        Cours.destroy(cours).then(() => {
+            res.send('Cours supprimé avec succés')
+        }).catch(err => {
+            res.send(err)
+        })
     },
-
+    deleteFilieres: (req, res) => {
+        const { nom } = req.body
+        const filieres = {
+            nom
+        }
+        Filieres.destroy(filieres).then(
+            res.send('Filière supprimé avec succés')
+        ).catch(err => {
+            res.end("Une erreur s'est produite")
+        })
+    },
+    deleteSemestres: (req, res) => {
+        const { nom } = req.body
+        const semestres = {
+            nom
+        }
+        Semestre.destroy(semestres).then(
+            res.end('Semestre supprimé avec succés')
+        ).catch(err => {
+            res.end("Une erreur s'est produite")
+        })
+    },
     logout: (req, res) => {
         req.session.destroy((err) => {
             if (err) {
