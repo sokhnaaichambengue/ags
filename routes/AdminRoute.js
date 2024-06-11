@@ -8,7 +8,9 @@ const admin = require('../controllers/AdminController')
 // Get Router
 AdminRouter.get('/admin/space', admin.getHome)
 AdminRouter.get('/admin/space/logout', admin.logout)
-
+AdminRouter.get('/admin/space/display/etudiant', admin.displayEtudiant)
+AdminRouter.get('/admin/space/display/enseignant', admin.displayEnseignant)
+AdminRouter.get('/admin/space/display/cour', admin.displayCours)
 // Post Router
 AdminRouter.post('/admin/space/create/etudiant', admin.createEtudiant)
 AdminRouter.post('/admin/space/create/enseignant', admin.createEnseignant)

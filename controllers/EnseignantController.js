@@ -3,7 +3,7 @@ const {Enseignant,Cours,Notes,sequelize} = require('../models/model')
 
 const enseignant = {
     getHome: (req, res) => {
-        res.render('enseignant-view')
+        res.render('pages/enseignant/enseignant-view')
     },
     createNote: (req, res) => {
         const { valeur, evaluation, etudiant, notes } = req.body;

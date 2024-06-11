@@ -8,7 +8,7 @@ const
 
 const admin = {
     getHome: (req, res) => {
-        res.render('admin-view')
+        res.render('pages/admin/admin-view')
     },
 
     // Create function
@@ -124,7 +124,7 @@ const admin = {
     },
     displayEnseignant: (req, res) => {
         Enseignant.findAll().then((enseignants) => {
-            res.send({ ennseignants })
+            res.render('',{ enseignants })
         }).catch(err => {
             res.end("Une erreur s'est produite")
         })
