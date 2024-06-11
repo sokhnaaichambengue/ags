@@ -1,12 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>space</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style-2.css">
 </head>
+
 <body>
-    <h1>Welcome etudiant</h1>
-    <a href="/etudiant/space/logout">Se déconnecter</a>
+    <div class="container d-md-flex align-items-stretch">
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5 pt-5">
+            <h2 class="mb-4">Etudiant Workspace</h2>
+
+        </div>
+
+        <nav id="sidebar">
+            <div class="p-4 pt-5">
+                <h5>Menu</h5>
+                <ul class="list-unstyled components mb-5">
+                    <li>
+                        <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">Voir mes notes</a>
+
+                        <ul class="collapse list-unstyled" id="pageSubmenu2">
+                            <li><a href="#">Afficher la liste</a></li>
+                            <li><a href="#">Signaler une erreur</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
 </body>
+
 </html>

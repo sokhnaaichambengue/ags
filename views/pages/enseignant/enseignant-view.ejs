@@ -1,13 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>space</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style-2.css">
 </head>
+
 <body>
-    <h1>Welcome enseignant</h1>
-    <a href="/enseignant/space/logout">Se déconnecter</a>
-    
+    <div class="container d-md-flex align-items-stretch">
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5 pt-5">
+            <h2 class="mb-4">Enseignant Workspace</h2>
+
+        </div>
+
+        <nav id="sidebar">
+            <div class="p-4 pt-5">
+                <h5>Menu</h5>
+                <ul class="list-unstyled components mb-5">
+                    <li>
+                        <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">Gestion
+                            des évaluations</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu1">
+                            <li><a href="#"> Ajouter une évaluation</a></li>
+                            <li><a href="#"> Modifier une évaluation</a></li>
+                            <li><a href="#"> Supprimer une évaluation</a></li>
+                            <li><a href="#"> Afficher la liste des évaluations</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">Gestion
+                            des notes</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu2">
+                            <li><a href="#">Ajouter une note</a></li>
+                            <li><a href="#">Modifier une note</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
 </body>
+
 </html>

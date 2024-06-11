@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>space</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style-2.css">
+
 </head>
 
 <body>
-
+    <!-- 
      <p><a href="/admin/space/logout">Se déconnecter</a></p>
     <div>
         Ajouter un étudiant
@@ -94,8 +97,80 @@
             <input type="text" name="semestreId">
             <br>
             <input type="submit" value="Ajouter un cours">
-        </form> -->
+        </form> 
 <a href="space/display/etudiant"> Liste des étudiants</a>
-     
+      -->
+
+
+    <div class="container d-md-flex align-items-stretch">
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5 pt-5">
+            <h2 class="mb-4">Admin : <%= login %> Workspace</h2>
+
+        </div>
+
+        <nav id="sidebar">
+            <div class="p-4 pt-5">
+                <h5>Menu</h5>
+                <ul class="list-unstyled components mb-5">
+                    <li>
+                        <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">Gestion des étudiants</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu1">
+                            <li><a href="#"> Ajouter un étudiant</a></li>
+                            <li><a href="#"> Modifier un étudiant</a></li>
+                            <li><a href="#"> Supprimer un étudiant</a></li>
+                            <li><a href="#"> Afficher la liste des étudiants</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">Gestion des enseignant</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu2">
+                            <li><a href="#">Ajouter un enseignant</a></li>
+                            <li><a href="#">Modifier un enseignant</a></li>
+                            <li><a href="#">Supprimer un enseignant</a></li>
+                            <li><a href="#">Afficher la liste des enseignant</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">Gestion des cours</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu3">
+                            <li><a href="#">Ajouter un cours</a></li>
+                            <li><a href="#">Modifier un cours</a></li>
+                            <li><a href="#">Supprimer un cours</a></li>
+                            <li><a href="#">Afficher la liste des cours</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">Gestion des filières</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu4">
+                            <li><a href="#">Ajouter une filière</a></li>
+                            <li><a href="#">Modifier une filière</a></li>
+                            <li><a href="#">Afficher la liste des filières</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#pageSubmenu5" data-toggle="collapse" aria-expanded="false" 
+                        class="dropdown-toggle">Gestion des semestres</a>
+                          
+                        <ul class="collapse list-unstyled" id="pageSubmenu5">
+                            <li><a href="#">Ajouter un semestre</a></li>
+                            <li><a href="#">Modifier un semestre</a></li>
+                            <li><a href="#">Afficher la liste des semestres</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
 </body>
+
 </html>

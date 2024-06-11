@@ -30,7 +30,12 @@ const home = {
         if (!ad && !et && !en) {
             res.status(404).send('<script>alert("login ou mot de passe incorrect")</script>')
         } else if(ad){
-            res.redirect('/admin/space')
+            res.redirect(url.format({
+                pathname: '/admin/space',
+                query: {
+                    'login': login
+                }
+            }))
         }else if(et){
             res.redirect('/etudiant/space')
         }else if(en){
