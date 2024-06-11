@@ -106,7 +106,7 @@ const admin = {
         })
     },
     displayCours: (req, res) => {
-        Enseignant.findAll().then(cours => {
+        Cours.findAll().then(cours => {
             res.render('', { cours })
         }).catch(err => {
             res.end("Une erreur s'est produite")
@@ -130,6 +130,8 @@ const admin = {
 
 
     updateEtudiant: (req, res) => {
+        const { nom, prenom, login, motpasse, filiereId } = req.body
+        
 
     },
     updateEnseignant: (req, res) => {
@@ -191,10 +193,12 @@ const admin = {
     },
     deleteFilieres: (req, res) => {
         const { nom } = req.body
-        const filieres = {
-            nom
-        }
-        Filieres.destroy(filieres).then(
+
+        Filieres.destroy({
+            where: {
+                nom: nom,
+            },
+        }).then(
             res.send('Filière supprimé avec succés')
         ).catch(err => {
             res.end("Une erreur s'est produite")
@@ -202,10 +206,12 @@ const admin = {
     },
     deleteSemestres: (req, res) => {
         const { nom } = req.body
-        const semestres = {
-            nom
-        }
-        Semestre.destroy(semestres).then(
+
+        Semestre.destroy({
+            where: {
+                nom: nom,
+            },
+        }).then(
             res.end('Semestre supprimé avec succés')
         ).catch(err => {
             res.end("Une erreur s'est produite")

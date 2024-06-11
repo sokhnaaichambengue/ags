@@ -155,10 +155,7 @@ Evaluation.init(
         duree: {
             type: DataTypes.INTEGER,
         },
-        cour:
-        {
-            type: DataTypes.STRING,
-        }
+
     },
     {
         sequelize: sequelize,
@@ -214,27 +211,20 @@ Cours.init(
 Filieres.hasMany(Etudiant)
 Etudiant.belongsTo(Filieres, { onDelete: 'CASCADE' })
 
-//Filieres.belongsToMany(Evaluation, { through: 'assos_filiere_evaluation' })
-//Evaluation.belongsToMany(Filieres, { through: 'assos_filiere_evaluation' })
-
-/* Evaluation.belongsToMany(Notes, { through: 'assos_evaluation_notes' })
-Notes.belongsToMany(Evaluation, { through: 'assos_evaluation_notes' })
- */
-
 Evaluation.hasMany(Notes)
 Notes.belongsTo(Evaluation, { onDelete: 'CASCADE' })
 
-Evaluation.belongsToMany(Cours, { through: 'assos_evaluation_cours' })
-Cours.belongsToMany(Evaluation, { through: 'assos_evaluation_cours' })
+Cours.hasMany(Evaluation)
+Evaluation.belongsTo(Cours, { onDelete: 'CASCADE' })
 
-Cours.belongsToMany(Notes, { through: 'assos_cours_notes' })
-Notes.belongsToMany(Cours, { through: 'assos_cours_notes' })
+Cours.hasMany(Notes)
+Notes.belongsTo(Cours, { onDelete: 'CASCADE' })
 
 Cours.belongsToMany(Etudiant, { through: 'assos_cours_etudiant' })
 Etudiant.belongsToMany(Cours, { through: 'assos_cours_etudiant' })
 
 Enseignant.hasMany(Cours)
-Cours.belongsTo(Enseignant, { onDelete: 'CASCADE' })
+Cours.belongsTo(Enseignant)
 
 Etudiant.hasMany(Notes)
 Notes.belongsTo(Etudiant, { onDelete: 'CASCADE' })

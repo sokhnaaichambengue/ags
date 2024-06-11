@@ -1,17 +1,19 @@
 /* Admin Controller */
-const {Enseignant,Cours,Notes,sequelize} = require('../models/model')
+const { Enseignant, Cours, Notes, sequelize, Evaluation } = require('../models/model')
 
 const enseignant = {
     getHome: (req, res) => {
         res.render('pages/enseignant/enseignant-view')
     },
+
     createNote: (req, res) => {
-        const { valeur, evaluation, etudiant, notes } = req.body;
+        const { valeur, evaluationId, etudiantLogin, semestreId } = req.body
         const note = {
             valeur,
-            evaluation,
-            etudiant,
-            notes
+            evaluationId,
+            etudiantLogin,
+            semestreId
+
         }
 
         Notes.create(note).then(() => {
@@ -21,14 +23,28 @@ const enseignant = {
         })
     },
 
+    createEvaluation: (req, res) => {
+        const { duree, coursNom } = req.body
+        const evaluation = {
+            duree,
+            coursNom
+        }
+
+        Evaluation.create(evaluation).then(() => {
+            res.send("L'évaluation a été créé avec succès")
+        }).catch(err => {
+            res.end("Une erreur s'est produite")
+        })
+    },
+
     modifNote: (req, res) => {
-        const { valeur, evaluation, etudiant, notes } = req.body;
+        const { valeur, evaluationId, etudiantLogin, semestreId } = req.body
         const note = {
             valeur,
-            evaluation,
-            etudiant,
-            cours,
-            notes
+            evaluationId,
+            etudiantLogin,
+            semestreId
+
         }
 
         Notes.update(note).then(() => {
@@ -37,13 +53,20 @@ const enseignant = {
             res.end("Une erreur s'est produite")
         })
     },
+
     displayCours: (req, res) => {
-        Enseignant.findAll().then(cours => {
+        const { enseignantLogin } = req.body
+        Cours.findAll({
+            where: {
+                enseignantLogin: enseignantLogin
+            }
+        }).then(cours => {
             res.render('', { cours })
         }).catch(err => {
             res.end("Une erreur s'est produite")
         })
     },
+
     logout: (req, res) => {
         req.session.destroy((err) => {
             if (err) {
