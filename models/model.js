@@ -217,12 +217,12 @@ Etudiant.belongsTo(Filieres, { onDelete: 'CASCADE' })
 Filieres.belongsToMany(Evaluation, { through: 'assos_filiere_evaluation' })
 Evaluation.belongsToMany(Filieres, { through: 'assos_filiere_evaluation' })
 
-Evaluation.belongsToMany(Notes, { through: 'assos_evaluation_notes' })
+/* Evaluation.belongsToMany(Notes, { through: 'assos_evaluation_notes' })
 Notes.belongsToMany(Evaluation, { through: 'assos_evaluation_notes' })
-
-/* Evaluation.hasMany(Notes)
-Notes.belongsTo(Evaluation, { onDelete: 'CASCADE' })
  */
+Evaluation.hasMany(Notes)
+Notes.belongsTo(Evaluation, { onDelete: 'CASCADE' })
+
 Evaluation.belongsToMany(Cours, { through: 'assos_evaluation_cours' })
 Cours.belongsToMany(Evaluation, { through: 'assos_evaluation_cours' })
 

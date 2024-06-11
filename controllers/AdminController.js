@@ -5,7 +5,7 @@ const
         Notes, Filieres,
         Semestre } = require('../models/model')
 
-//const {session} = require('./index')
+
 const admin = {
     getHome: (req, res) => {
         res.render('admin-view')
@@ -55,20 +55,21 @@ const admin = {
         })
     },
     createCours: (req, res) => {
-        const { nom, enseignant, lieu } = req.body;
+        const { nom, lieu, enseignantLogin,semestreId } = req.body;
         const cours = {
             nom,
-            enseignant,
-            lieu
+            lieu,
+            enseignantLogin,
+            semestreId
         }
 
         Cours.create(cours).then(() => {
             res.send("Le cours a été créé avec succès")
         }).catch(err => {
-            res.end("Une erreur s'est produite")
+            res.end(err)
         })
     },
-    createNote: (req, res) => {
+/*     createNote: (req, res) => {
         const { valeur, evaluation, etudiant, notes } = req.body;
         const note = {
             valeur,
@@ -83,7 +84,7 @@ const admin = {
         }).catch(err => {
             res.end("Une erreur s'est produite")
         })
-    },
+    }, */
 
     createFilieres: (req, res) => {
         const { nom } = req.body;
@@ -122,14 +123,22 @@ const admin = {
         })
     },
     displayEnseignant: (req, res) => {
-
+        Enseignant.findAll().then((enseignants) => {
+            res.send({ ennseignants })
+        }).catch(err => {
+            res.end("Une erreur s'est produite")
+        })
     },
     displayCours: (req, res) => {
 
     },
-    displayNote: (req, res) => {
+    displayFilieres: (req, res) => {
 
     },
+    displaySemestres: (req, res) => {
+
+    },
+
 
     // Update function
     updateEtudiant: (req, res) => {
